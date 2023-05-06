@@ -1,9 +1,16 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import logo from "../Images/wild-beer-logo.png";
 
 function Menu() {
-  const [inputValue, setInputValue] = useState("");
+  let { username } = useParams();
+  if (username === undefined) {
+    username = "";
+  }
+  if (username.length > 15) {
+    username = username.slice(0, 15);
+  }
+  const [inputValue, setInputValue] = useState(username);
 
   const handleChange = (event) => {
     const regex = /^[a-zA-Zé-]{0,15}$/;

@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 
+import { Link, useParams } from "react-router-dom";
+
 import { useEffect, useState } from "react";
 
 import gifVictory from "../../Images/Victory.gif";
@@ -15,6 +17,13 @@ function Round({
   onePlayerScore,
   twoPlayerScore,
 }) {
+  let { username } = useParams();
+  if (username === undefined) {
+    username = "Player";
+  }
+  if (username.length > 15) {
+    username = username.slice(0, 15);
+  }
   // test automatisation
   const [endGame, setEndGame] = useState(false);
   const [victory, setVictory] = useState(false);
@@ -39,10 +48,6 @@ function Round({
     }
   }, [roundNumber]);
 
-  function refreshPage() {
-    window.location.reload(false);
-  }
-
   return (
     <>
       {victory && (
@@ -56,13 +61,11 @@ function Round({
         {!endGame && <h1> Round {roundNumber}: </h1>}
         <h1>{value}</h1>
         {endGame && (
-          <button
-            onClick={refreshPage}
-            type="button"
-            className="button-recommencer"
-          >
-            Recommencer
-          </button>
+          <Link to={`/menu/${username}`}>
+            <button type="button" className="button-recommencer">
+              Recommencer
+            </button>
+          </Link>
         )}
       </div>
     </>

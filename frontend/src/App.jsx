@@ -11,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<AgeCheck />} />
         <Route path="/menu" element={<Menu />} />
+        <Route path="/menu/:username" element={<Menu />} />
         <Route path="/menu/wild-beer-gaming/" element={<Board />} />
         <Route path="/menu/wild-beer-gaming/:username" element={<Board />} />
         <Route path="/mineur" element={<UnderAge />} />
