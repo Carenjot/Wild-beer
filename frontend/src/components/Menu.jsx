@@ -23,7 +23,7 @@ function Menu() {
       <div className="home">
         <img src={logo} alt="" />
         <section className="containerMenu">
-          <form className="firstMenu">
+          <div className="firstMenu">
             <label>
               Entrez votre pseudo de Zythologue Amateur
               <input
@@ -38,7 +38,7 @@ function Menu() {
                 Jouer
               </button>
             </Link>
-          </form>
+          </div>
         </section>
       </div>
     </div>
